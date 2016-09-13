@@ -66,3 +66,6 @@
       
 (defun delete-rows (selector-fn)
   (setf *db* (remove-if selector-fn *db*)))
+
+(defun make-comparison-expression (field value)
+  (list 'equal (list 'getf 'cd value) value))
