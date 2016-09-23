@@ -19,5 +19,14 @@
 
 (defmacro do-primes-1 ((var start end) &body body)
   `(do ((,var (next-prime ,start) (next-prime(1+ ,var))))
-       ((> ,var end))
+       ((> ,var ,end))
      ,@body))
+
+(do-primes-1 (p 0 99) (format t "~d " p))
+
+(defmacro do-primes-2 ((var start end) &body body)
+  (let ((ending-value-name (gensym)))
+    '(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
+	  (,ending-value-name ,end))
+      ((> ,var ,ending-value-name))
+      ,@body)))
