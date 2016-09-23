@@ -16,3 +16,8 @@
     `(do ((,var (next-prime ,start) (next-prime (1+ ,var))))
 	 ((> ,var ,end))
        ,@body)))
+
+(defmacro do-primes-1 ((var start end) &body body)
+  `(do ((,var (next-prime ,start) (next-prime(1+ ,var))))
+       ((> ,var end))
+     ,@body))
