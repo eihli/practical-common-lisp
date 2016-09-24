@@ -26,3 +26,7 @@
 (defun test-+ ()
   (check (= (+ 1 2) 3))
   (check (= (- 10 8) 5)))
+
+(defmacro check (&body forms)
+  `(progn
+     ,@(loop for f in forms collect `(report-result ,f ',f))))
