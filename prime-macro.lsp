@@ -26,7 +26,9 @@
 
 (defmacro do-primes-2 ((var start end) &body body)
   (let ((ending-value-name (gensym)))
-    '(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
+    `(do ((,var (next-prime ,start) (next-prime (1+ ,var)))
 	  (,ending-value-name ,end))
-      ((> ,var ,ending-value-name))
-      ,@body)))
+	 ((> ,var ,ending-value-name))
+       ,@body)))
+
+(do-primes-2 (p 10 99) (format t "~d " p))
