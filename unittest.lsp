@@ -17,3 +17,12 @@
 (defun test-+ ()
   (report-result (= (+ 1 2) 3) '(= (+ 1 2) 3))
   (report-result (= (- 10 8) 3) '(= (- 10 8) 3)))
+
+(defmacro check (form)
+  `(report-result ,form ',form))
+
+(check (= (+ 1 2) 3))
+
+(defun test-+ ()
+  (check (= (+ 1 2) 3))
+  (check (= (- 10 8) 5)))
