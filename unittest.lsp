@@ -26,10 +26,10 @@
 
 (defun test-+ ()
   (check (= (+ 1 2) 3))
-  (check (= (- 10 8) 5)))
+  (check (= (- 10 8) 2)))
 
 (defmacro check (&body forms)
-  `(progn
+  `(combine-results
      ,@(loop for f in forms collect `(report-result ,f ',f))))
 
 ;; (let ((result t))
@@ -56,4 +56,4 @@
 
 (combine-results
  (= (+ 1 2) 3)
- (= (+ 10 5) 15))
+ (= (+ 10 5) 14))
